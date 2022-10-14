@@ -63,10 +63,25 @@
       <li data-time="6:03">Video 55</li>
       <li data-time="12:39">Video 56</li>
       <li data-time="1:56">Video 57</li>
-      <li data-time="4:04">Video 58</li>
+      <li data-time="4:06">Video 58</li>
     </ul>
     <script>
-      const timenodes = document.querySelectorAll('[data-time]');
+      const timenodes = Array.from(document.querySelectorAll('[data-time]'));
+      const seconds=timenodes.map(node=>node.dataset.time)
+      .map(timecode=>{
+        const [mins,secs]=timecode.split(':').map(parseFloat);
+        return (mins*60)+secs;
+      }).reduce((total,vidseconds)=>{
+        return total+vidseconds
+      });
+
+      
+    let secondsleft=seconds;
+    const hours=Math.floor(secondsleft/3600);
+    secondsleft=secondsleft%3600;
+    const mins=Math.floor(secondsleft/60);
+    secondsleft=secondsleft%60;
+    console.log(hours,mins,secondsleft);
     </script>
   </body>
 </html>
