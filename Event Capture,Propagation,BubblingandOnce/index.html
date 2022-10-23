@@ -43,6 +43,7 @@
 <button></button>
 <script>
 const divs=document.querySelectorAll('div');
+const btn=document.querySelector('button');
 function logtext(e){
   console.log(this.classList.value);
   // e.stopPropagation();//stop building down on click on thing seletec will lo consoled.
@@ -55,6 +56,10 @@ divs.forEach(div=>div.addEventListener('click',logtext,{
 }));
 
 //once mean it will run only once the page is completely refreshed......
+
+btn.addEventListener('click',()=>{
+console.log('clicked!');
+},{once:true});
 </script>
 </body>
 </html>
