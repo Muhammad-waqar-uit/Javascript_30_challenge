@@ -42,7 +42,19 @@
 
 <button></button>
 <script>
+const divs=document.querySelectorAll('div');
+function logtext(e){
+  console.log(this.classList.value);
+  // e.stopPropagation();//stop building down on click on thing seletec will lo consoled.
 
+}
+
+divs.forEach(div=>div.addEventListener('click',logtext,{
+  capture:false,
+   once:true//on true reverse pickup 
+}));
+
+//once mean it will run only once the page is completely refreshed......
 </script>
 </body>
 </html>
